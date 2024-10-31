@@ -1,0 +1,6 @@
+/share/home/mengxiangyu/lightdockc/source/../lib/libpre.so
+/share/home/mengxiangyu/lightdockc/source/../bin/lightdock
+/share/home/mengxiangyu/lightdockc/source/../lib/libjson.a
+/share/home/mengxiangyu/lightdockc/source/../lib/libfreesasa.a
+/share/home/mengxiangyu/lightdockc/source/../lib/libdock.so
+/share/home/mengxiangyu/lightdockc/source/../lib/liblight_dock_cuda.so

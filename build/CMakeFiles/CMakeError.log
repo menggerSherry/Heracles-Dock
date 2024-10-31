@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_ccf13/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_ccf13.dir/build.make CMakeFiles/cmTC_ccf13.dir/build
+gmake[1]: Entering directory `/share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ccf13.dir/src.c.o
+/share/app/gcc/gcc-11.4.0/bin/gcc  -O2  -g -fpermissive -fPIC   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_ccf13.dir/src.c.o   -c /share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp/src.c
+cc1: warning: command-line option ‘-fpermissive’ is valid for C++/ObjC++ but not for C
+Linking C executable cmTC_ccf13
+/share/home/mengxiangyu/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ccf13.dir/link.txt --verbose=1
+/share/app/gcc/gcc-11.4.0/bin/gcc  -O2  -g -fpermissive -fPIC  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_ccf13.dir/src.c.o  -o cmTC_ccf13 
+/usr/bin/ld: Dwarf Error: found dwarf version '5', this reader only handles version 2, 3 and 4 information.
+CMakeFiles/cmTC_ccf13.dir/src.c.o: In function `main':
+src.c:(.text.startup+0x15): undefined reference to `pthread_create'
+src.c:(.text.startup+0x1f): undefined reference to `pthread_detach'
+/usr/bin/ld: Dwarf Error: found dwarf version '7424', this reader only handles version 2, 3 and 4 information.
+src.c:(.text.startup+0x29): undefined reference to `pthread_cancel'
+src.c:(.text.startup+0x35): undefined reference to `pthread_join'
+src.c:(.text.startup+0x40): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_ccf13] Error 1
+gmake[1]: Leaving directory `/share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_ccf13/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_7048d/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_7048d.dir/build.make CMakeFiles/cmTC_7048d.dir/build
+gmake[1]: Entering directory `/share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_7048d.dir/CheckFunctionExists.c.o
+/share/app/gcc/gcc-11.4.0/bin/gcc  -O2  -g -fpermissive -fPIC   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_7048d.dir/CheckFunctionExists.c.o   -c /share/home/mengxiangyu/cmake/share/cmake-3.17/Modules/CheckFunctionExists.c
+cc1: warning: command-line option ‘-fpermissive’ is valid for C++/ObjC++ but not for C
+Linking C executable cmTC_7048d
+/share/home/mengxiangyu/cmake/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7048d.dir/link.txt --verbose=1
+/share/app/gcc/gcc-11.4.0/bin/gcc  -O2  -g -fpermissive -fPIC  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_7048d.dir/CheckFunctionExists.c.o  -o cmTC_7048d  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_7048d] Error 1
+gmake[1]: Leaving directory `/share/home/mengxiangyu/lightdockc/build/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_7048d/fast] Error 2
+
+
+
